@@ -1,6 +1,6 @@
-from product import Product
+from products.product import Product
 
-class FoodUtensils(Product):
+class Food(Product):
     def __init__(self, code, name, price, quantity, expiration):
         super().__init__(code, name, price, quantity)
         self._expiration = expiration

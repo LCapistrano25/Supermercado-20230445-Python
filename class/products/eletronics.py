@@ -1,4 +1,4 @@
-from product import Product
+from products.product import Product
 
 class Eletronics(Product):
     def __init__(self, code, name, price, quantity, warranty):
