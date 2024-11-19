@@ -1,4 +1,5 @@
 from products.eletronics import Eletronics
+from products.foods import Food
 
 class Stock:
     def __init__(self):
@@ -80,6 +81,15 @@ class Stock:
             return product
         return None
     
+    def show_stock(self):
+        """
+        Método de exibição do estoque
+        """
+        print('\nEstoque atual:')
+        for key, values in self.get_products().items():
+            print(values)
+        return None
+
     def _search_product_code(self, code):
         """
         Método auxiliar de consulta por meio do código do produto
