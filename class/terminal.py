@@ -1,12 +1,12 @@
 import time
-from colors import RESET, BOLD_RED, BOLD_WHITE, BOLD_GREEN, BOLD_BLUE, WHITE
+from colors import RESET, BOLD_RED, BOLD_WHITE, BOLD_GREEN, BOLD_BLUE, WHITE, BOLD_YELLOW
 
 class Terminal:
 
     def validate_input(self, text, type):
         while True:
             try:
-                value = type(input(text))
+                value = type(input(f"{BOLD_WHITE}{text}{RESET} "))
                 return value
             except ValueError:
                 print(f"{BOLD_RED}Valor inválido. Tente novamente.{RESET}")
@@ -14,7 +14,7 @@ class Terminal:
     def validate_option(self, text, type, options):
         while True:
             try:
-                value = type(input(text))
+                value = type(input(f"{BOLD_WHITE}{text}{RESET} "))
                 if value in options:
                     return value
                 else:
@@ -49,4 +49,11 @@ class Terminal:
         print(f'Você iniciou seu caixa com R${opening_balance}.')
         print(f'Você está fechando o caixa com R${ending_balance}.')
 
-    
+    def show_search_options(self):
+        print(f'\n{BOLD_BLUE}Opções:{RESET}\n')
+
+        print(f'{WHITE}1 - Código')
+        print(f'2 - Nome{RESET}')
+        print(f'{BOLD_RED}3 - Voltar{RESET}')
+
+        return self.validate_option('\nVocê deseja pesquisar por?', int, [1,2,3])
