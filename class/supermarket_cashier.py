@@ -16,6 +16,9 @@ class SupermarketCashier:
     def get_terminal(self):
         return self._terminal
     
+    def get_stock(self):
+        return self._stock
+    
     def open_supermarket_cashier(self):
         while True:
             option = self.get_terminal().show_menu(self.get_balance())
@@ -23,7 +26,7 @@ class SupermarketCashier:
             if option == 1:
                 pass
             elif option == 2:
-                pass
+                self.choose_search_option()
             elif option == 3:
                 pass
             elif option == 4:
@@ -64,4 +67,31 @@ class SupermarketCashier:
         # Receber o objeto do produto
         # Abater a quantidade
         pass
-    
+
+    def choose_search_option(self): 
+        while True:
+            option = self.get_terminal().show_search_options()
+
+            if option == 1:
+                code = self.get_terminal().validate_input(f'\nInsira o código do produto: ', str)
+                product = self.get_stock().search_product(code, name=None)   
+
+                if product:
+                    print(product)
+                    return
+                return
+            
+            elif option == 2:
+                name = self.get_terminal().validate_input(f'\nInsira o nome do produto: ', str)
+                product = self.get_stock().search_product(code=None, name=name)   
+
+                if product:
+                    print(product)
+                    return
+                return
+            
+            elif option == 3:
+                return
+            
+
+
