@@ -73,6 +73,7 @@ class Stock:
         """
         if not self._error_or_empty(code, name):
             return None
+        
         if code:
             product = self._search_product_code(code)
             return product
@@ -98,7 +99,7 @@ class Stock:
             if key == code:
                 print(values)
                 return values
-        print('Produto não encontrado no estoque!')
+        print(f'\nProduto de código {code} não encontrado no estoque!')
         return None
 
     def _search_product_name(self, name):
@@ -109,7 +110,7 @@ class Stock:
             if name == values.get_name():
                 print(values)
                 return values
-        print('Produto não encontrado no estoque!')
+        print(f'\nProduto {name} não encontrado no estoque!')
         return None
     
     def _error_or_empty(self, code=None, name=None):
