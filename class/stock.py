@@ -1,46 +1,50 @@
+import pandas as pd
 from products.eletronics import Eletronics
 from products.foods import Food
+from products.utensils import Utensils
 
 class Stock:
+    """
+    Classe para representar o estoque
+    """
     def __init__(self):
-        self._product={}
+        self._products={
+            1: Eletronics(1, 'Smartphone', 1000.00, 10, 1),
+            2: Food(2, 'Arroz', 10.00, 100, 90),
+            3: Utensils(3, 'Panela', 50.00, 50, 365),
+            4: Eletronics(4, 'Notebook', 2000.00, 5, 2),
+            5: Food(5, 'Feijão', 5.00, 100, 180),
+        }
 
     def get_products(self):
         """
         Método de retorno do estoque.
         """
-        return self._product
+        return self._products
     
     def add_product(self, product):
         """
         Método para adicionar produto ao estoque.
         """
-        self._product[product.get_code()]=product
+        self._products[product.get_code()]=product
 
-    def remove_product(self, code=None, name=None):
+    def remove_product(self, product):
         """
         Método de remover produto do estoque.
         """
-        if not self._error_or_empty(code, name):
-            return None
-        product = self.search_product(code, name)
         if product:
             del self.get_products()[product.get_code()] 
-            print(product)
             return
         print('Não encontramos o produto informado!')
         return None
 
-    def update_product(self, updates, code=None, name=None):
+    def update_product(self, updates, product):
         """
         Método de atualizar um produto
         """
-        if not self._error_or_empty(code, name):
-            return None
         if not updates:
             return None
         
-        product = self.search_product(code, name)
         if product:
             self._update_product(product, updates)
             return 
@@ -62,7 +66,6 @@ class Stock:
             
             if hasattr(product, setter_method) and hasattr(product, getter_method):
                 getattr(product, setter_method)(new_value)
-                print(f"Atributo '{attribute}' atualizado para '{new_value}'.")
             else:
                 print(f"Atributo '{attribute}' não encontrado ou não pode ser atualizado no produto.")
         return None
@@ -86,18 +89,34 @@ class Stock:
         """
         Método de exibição do estoque
         """
-        print('\nEstoque atual:')
+        table = []
+        print('\nEstoque atual:\n')
         for key, values in self.get_products().items():
-            print(values)
-        return None
+            table.append(
+                {
+                    "Código": values.get_code(),
+                    "Nome": values.get_name(),
+                    "Preço": values.get_price(),
+                    "Quantidade": values.get_quantity()
+                }
+            )
+
+            if isinstance(values, Eletronics):
+                table[-1]["Garantia"] = values.get_warranty()
+
+            if isinstance(values, Food) or isinstance(values, Utensils):
+                table[-1]["Validade"] = values.get_expiration()
+
+        print( pd.DataFrame(table))
 
     def _search_product_code(self, code):
         """
         Método auxiliar de consulta por meio do código do produto
         """
         for key, values in self.get_products().items():
-            if key == code:
-                print(values)
+            if int(key) == int(code):
+                print(30*'-')
+                print('\nProduto encontrado!\n')
                 return values
         print(f'\nProduto de código {code} não encontrado no estoque!')
         return None
@@ -108,7 +127,8 @@ class Stock:
         """
         for key, values in self.get_products().items():
             if name == values.get_name():
-                print(values)
+                print(30*'-')
+                print('\nProduto encontrado!\n')
                 return values
         print(f'\nProduto {name} não encontrado no estoque!')
         return None
