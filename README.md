@@ -1,8 +1,8 @@
 # 💻 SUPERCLT
 
-. 🥗 Alimentos
-. 🍴 Utensílios
-. 📺 Eletrônicos
+- 🥗 Alimentos
+- 🍴 Utensílios
+- 📺 Eletrônicos
 
 # 📂 Estrutura do Projeto
 
