@@ -1,5 +1,5 @@
 import time
-from colors import RESET, BOLD_RED, BOLD_WHITE, BOLD_GREEN, BOLD_BLUE, WHITE, BOLD_YELLOW
+from colors import RESET, BOLD_RED, BOLD_WHITE, BOLD_GREEN, BOLD_BLUE, WHITE, BOLD_YELLOW, BLUE
 from products.factory_product import FactoryProduct
 
 class Terminal:
@@ -48,7 +48,7 @@ class Terminal:
         """
         Método para exibir o menu do caixa
         """
-        print(f'\n{BOLD_WHITE}Você está iniciando seu caixa com{RESET} {BOLD_GREEN}R$ {balance}{RESET}.\n')
+        print(f'\n{BOLD_WHITE}Seu caixa tem{RESET} {BOLD_GREEN}R$ {balance}{RESET}.\n')
 
         print('1 - Cadastrar Produto')
         print('2 - Pesquisar Produto')
@@ -56,9 +56,10 @@ class Terminal:
         print('4 - Atualizar Produto')
         print('5 - Realizar venda')
         print('6 - Mostrar Estoque')
-        print('7 - Fechar Caixa')
+        print('7 - Relatórios')
+        print('8 - Fechar Caixa')
 
-        return self.validate_option('\nPor favor, escolha uma das opções acima: ', int, [1,2,3,4,5,6,7])
+        return self.validate_option('\nPor favor, escolha uma das opções acima: ', int, [1,2,3,4,5,6,7,8])
 
     def show_final_message(self, opening_balance, ending_balance):
         """
@@ -206,3 +207,58 @@ class Terminal:
         print(f'{BOLD_RED}4 - Cancelar compra{RESET}')
 
         return self.validate_option('\nPor favor, escolha o tipo do produto: ', int, [1,2,3,4])
+    
+    def show_finish_selling(self):
+        """
+        Método para exibir a mensagem final da compra
+        """
+        import time
+        print(f'\n{BOLD_YELLOW}Por favor, aguarde!{RESET}')
+        time.sleep(2)
+        print(f'{BOLD_WHITE}A compra está sendo finalizada....{RESET}')
+        time.sleep(4)
+        print(f'{BOLD_BLUE}Gerando Cumpom Fiscal....{RESET}')
+        time.sleep(6)
+        print(f'{BOLD_GREEN}Calculando total da compra....{RESET}')
+
+    def show_options_report(self):
+        """
+        Método para exibir as opções de relatório
+        """
+        print(f'\n{BOLD_BLUE}Opções de relatório:{RESET}\n')
+        print(f'{WHITE}1 - Por quantidade{RESET}')
+        print(f'{WHITE}2 - Por validade em {RESET}{BOLD_YELLOW}dias{RESET} {BOLD_WHITE}(Utensílios & Alimentos){RESET}')
+        print(f'{WHITE}3 - Por validade em {RESET}{BOLD_YELLOW}anos{RESET} {BOLD_WHITE}(Eletrônicos){RESET}')
+        print(f'{BOLD_RED}4 - Voltar{RESET}')
+
+        return self.validate_option('\nQual tipo de relatório deseja gerar?:', int, [1,2,3,4])
+
+    def show_report(self, products, type_product=2):
+        """Exibe um relatório dos produtos fornecidos.
+
+        Args:
+            products (list): Lista de produtos a serem exibidos.
+            type_product (int, optional): Tipo de produto (não utilizado no exemplo atual).
+        """
+        if not products:  # Trata listas vazias ou None
+            print(f'{BLUE}\nNenhum produto encontrado.{RESET}')
+            return
+
+        print(f'{BOLD_BLUE}\nRelatório de Produtos{RESET}')
+        print('-' * 40)
+
+        for product in products:
+            details = [
+                f'{WHITE}Código: {product.get_code()}{RESET}',
+                f'{WHITE}Nome: {product.get_name()}{RESET}',
+                f'{WHITE}Preço: R$ {product.get_price()}{RESET}',
+                f'{WHITE}Quantidade: {product.get_quantity()} unidades{RESET}',
+            ]
+
+            if hasattr(product, 'get_expiration'):
+                details.append(f'{WHITE}Validade: {product.get_expiration()} dia(s){RESET}')
+            if hasattr(product, 'get_warranty'):
+                details.append(f'{WHITE}Garantia: {product.get_warranty()} ano(s){RESET}')
+
+            print('\n'.join(details))
+            print('-' * 40)
