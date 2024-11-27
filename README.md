@@ -7,6 +7,8 @@
 - 🏪 Supermarket Cashier
 - 🏬 Stock
 - 🖥️ Terminal
+- 🧾 Simulator
+- 🌈 Cores
 
 # 🛠️ Products
 A classe Product é uma classe abstrata que serve como base para todas as outras entidades de produtos no sistema.
