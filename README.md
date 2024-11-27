@@ -4,8 +4,6 @@
 - 🍴 Utensílios
 - 📺 Eletrônicos
 
-# 📂 Estrutura do Projeto
-
 # 🛠️ Products
 A classe Product é uma classe abstrata que serve como base para todas as outras entidades de produtos no sistema.
 Ela define os atributos e métodos essenciais para qualquer produto.
@@ -43,3 +41,55 @@ A classe Electronics representa dispositivos eletrônicos, adicionando o atribut
 - 📌 Métodos Adicionais
     - get_warranty(): Retorna a garantia do produto.
     - set_warranty(warranty): Define a garantia do produto.
+
+# 🏪 Supermarket Cashier
+
+A classe `SupermarketCashier` simula o funcionamento do caixa do supermercado.
+
+🔑 Métodos Base
+- get_balance(): Retorna o saldo atual do caixa.
+- set_balance(balance): Define o saldo do caixa.
+- get_previus_balance(): Retorna o saldo anterior.
+- set_previus_balance(previus_balance): Define o saldo anterior.
+- get_terminal(): Retorna o terminal para interação com o usuário.
+- get_stock(): Retorna o estoque de produtos.
+
+📌 Métodos Adicionais
+- open_supermarket_cashier(): Abre o caixa do supermercado e permite interação.
+- close_supermarket_cashier(): Fecha o caixa e exibe o saldo.
+- make_sale(): Realiza uma venda e atualiza o estoque.
+- choose_search_option(): Escolhe uma opção para buscar produtos.
+- create_product(): Cria um novo produto.
+- delete_product(): Deleta um produto do estoque.
+- update_product(): Atualiza as informações de um produto no estoque.
+
+# 🏬 Stock
+
+A classe `Stock` gerencia o estoque de produtos no supermercado.
+
+🔑 Métodos Base
+- get_products(): Retorna todos os produtos do estoque.
+- add_product(product): Adiciona um novo produto ao estoque.
+- remove_product(product): Remove um produto do estoque.
+- update_product(updates, product): Atualiza as informações de um produto no estoque.
+
+📌 Métodos Adicionais
+- search_product(code=None, name=None): Busca um produto no estoque por código ou nome.
+- show_stock(): Exibe o estoque atual de produtos.
+- search_products(quantity=None, expiration=None, warranty=None): Busca produtos com base em parâmetros adicionais.
+  
+# 🖥️ Terminal
+
+A classe `Terminal` é responsável pela interface de interação com o usuário no processo de vendas e gestão de estoque.
+
+📌 Métodos
+- show_initial_message(): Exibe a mensagem inicial de opções para o usuário.
+- show_menu(balance): Exibe o menu principal do caixa, com opções de gerenciamento de produtos e vendas.
+- show_make_sale(): Exibe a interface para fazer uma venda.
+- show_search_options(): Exibe as opções de busca de produtos.
+- show_create_product(): Exibe a interface para criar um novo produto.
+- show_update_product(product): Exibe a interface para atualizar um produto existente.
+- show_report(products): Exibe o relatório de produtos encontrados conforme a busca.
+- show_tax_coupon(quantity, name, product): Exibe o cupom fiscal para um produto.
+- validate_input(message, type): Valida a entrada de dados do usuário.
+- validate_option(message, type, options): Valida uma opção de escolha entre um conjunto de opções.
