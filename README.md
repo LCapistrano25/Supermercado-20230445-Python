@@ -1,8 +1,12 @@
 # 💻 SUPERCLT
 
+- 🛠️ Products
 - 🥗 Alimentos
 - 🍴 Utensílios
 - 📺 Eletrônicos
+- 🏪 Supermarket Cashier
+- 🏬 Stock
+- 🖥️ Terminal
 
 # 🛠️ Products
 A classe Product é uma classe abstrata que serve como base para todas as outras entidades de produtos no sistema.
@@ -93,3 +97,19 @@ A classe `Terminal` é responsável pela interface de interação com o usuário
 - show_tax_coupon(quantity, name, product): Exibe o cupom fiscal para um produto.
 - validate_input(message, type): Valida a entrada de dados do usuário.
 - validate_option(message, type, options): Valida uma opção de escolha entre um conjunto de opções.
+
+# 🧾 Simulator
+A classe `Simulator` simula o funcionamento do caixa do supermercado, interagindo com a classe `SupermarketCashier`.
+
+🔑 Métodos Base
+- get_supermarket_cashier(): Retorna o objeto do caixa do supermercado.
+
+📌 Métodos Adicionais
+- main(): Método principal que simula o funcionamento do caixa do supermercado. Exibe o menu inicial e permite ao usuário abrir o caixa ou finalizar a operação.
+- Exibir a mensagem inicial e opções ao usuário.
+- Abrir o caixa do supermercado ou finalizar a operação dependendo da escolha.
+
+### Importações
+- `SupermarketCashier`: Responsável pela operação do caixa e estoque.
+- `BOLD_RED` e `RESET`: Definem estilos de texto para a exibição de mensagens.
+
