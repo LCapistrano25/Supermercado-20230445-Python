@@ -109,7 +109,28 @@ A classe `Simulator` simula o funcionamento do caixa do supermercado, interagind
 - Exibir a mensagem inicial e opções ao usuário.
 - Abrir o caixa do supermercado ou finalizar a operação dependendo da escolha.
 
-### Importações
-- `SupermarketCashier`: Responsável pela operação do caixa e estoque.
-- `BOLD_RED` e `RESET`: Definem estilos de texto para a exibição de mensagens.
+# 🌈 Cores
+
+Este arquivo define as cores usadas no terminal para estilizar a saída do sistema. As cores são representadas por códigos ANSI, que são interpretados pelos terminais para alterar a cor do texto.
+
+### Cores Normais
+- `BLACK`: Cor preta.
+- `RED`: Cor vermelha.
+- `GREEN`: Cor verde.
+- `YELLOW`: Cor amarela.
+- `BLUE`: Cor azul.
+- `MAGENTA`: Cor magenta.
+- `CYAN`: Cor ciano.
+- `WHITE`: Cor branca.
+- `RESET`: Restaura a cor padrão do terminal.
+
+### Cores em Negrito
+- `BOLD_BLACK`: Preto em negrito.
+- `BOLD_RED`: Vermelho em negrito.
+- `BOLD_GREEN`: Verde em negrito.
+- `BOLD_YELLOW`: Amarelo em negrito.
+- `BOLD_BLUE`: Azul em negrito.
+- `BOLD_MAGENTA`: Magenta em negrito.
+- `BOLD_CYAN`: Ciano em negrito.
+- `BOLD_WHITE`: Branco em negrito.
 
