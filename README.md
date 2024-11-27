@@ -1,4 +1,5 @@
 # 💻 SUPERCLT
+Consiste num sistema simples de supermercado que visa realizar as funções básicas de um caixa, como ver saldo anterior, registrar produtos, perquisar, deletar, atualizar, ver estoque entre outros.
 
 - 🛠️ Products
 - 🥗 Alimentos
