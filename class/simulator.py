@@ -7,7 +7,7 @@ class Simulator:
     """
     def __init__(self):
         self._supermarket_cashier = SupermarketCashier()
-
+        
     def get_supermarket_cashier(self):
         """
         Método para retornar o caixa do supermercado

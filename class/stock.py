@@ -141,3 +141,21 @@ class Stock:
             print('Consulta inválida, insira os parâmentros solicitados!')
             return False
         return True
+    
+    def search_products(self, quantity=None, expiration=None, warranty=None):
+        products_found = []
+
+        for key, product in self.get_products().items():
+            if quantity:
+                if product.get_quantity() <= quantity:
+                    products_found.append(product)
+
+            if hasattr(product, 'get_expiration') and expiration:
+                if product.get_expiration() <= expiration:
+                    products_found.append(product)
+
+            if hasattr(product, 'get_warranty') and warranty:
+                if product.get_warranty() <= warranty:
+                    products_found.append(product)
+
+        return products_found
